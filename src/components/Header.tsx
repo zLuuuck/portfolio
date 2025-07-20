@@ -8,7 +8,7 @@ export const Header = ({ lenisRef }: { lenisRef: RefObject<Lenis | null> }) => {
   const scrollToSection = (id: string) => { 
     const target = document.querySelector(id);
     if (target && lenisRef.current) {
-      lenisRef.current.scrollTo(target as HTMLElement, { offset: -50 });
+      lenisRef.current.scrollTo(target as HTMLElement, { duration: 1.2 });
     }
   };
 

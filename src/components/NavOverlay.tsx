@@ -17,8 +17,8 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
                 gsap.to(overlayRef.current, {
                     y: 0,
                     opacity: 1,
-                    duration: 0.6,
-                    ease: "power3.out",
+                    duration: 0.5,
+                    ease: "power3.",
                     pointerEvents: "auto",
                 });
             } else {
@@ -41,7 +41,7 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
     return (
         <div
             ref={overlayRef}
-className="fixed top-0 left-0 w-full h-full bg-black/50 backdrop-blur-sm text-white z-50 translate-y-[-100%] opacity-0 pointer-events-none transition-all flex flex-col items-center justify-between overflow-y-auto"
+            className="fixed top-0 left-0 w-full h-full bg-black/50 backdrop-blur-sm text-white z-50 opacity-0 pointer-events-none flex flex-col items-center justify-between overflow-y-auto"
         >
             {/* Botão X */}
             <button

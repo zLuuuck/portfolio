@@ -10,8 +10,7 @@ const useLenis = () => {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.5,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.2,
     });
 
     lenisRef.current = lenis;
@@ -23,10 +22,33 @@ const useLenis = () => {
 
     requestAnimationFrame(raf);
 
+    // ScrollTrigger + Lenis
     lenis.on("scroll", ScrollTrigger.update);
+
+    ScrollTrigger.scrollerProxy(document.body, {
+      scrollTop(value) {
+        if (arguments.length && typeof value === "number") {
+          lenis.scrollTo(value);
+        }
+        return window.scrollY;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      pinType: document.body.style.transform ? "transform" : "fixed",
+    });
+
+    ScrollTrigger.addEventListener("refresh", () => lenis.raf(performance.now()));
+    ScrollTrigger.refresh();
 
     return () => {
       lenis.destroy();
+      ScrollTrigger.removeEventListener("refresh", () => lenis.raf(performance.now()));
     };
   }, []);
 
