@@ -1,22 +1,37 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Home } from "./pages/Home";
-import { NotFound } from "./pages/NotFound";
+import { About } from "./pages/About";
+import { Skills } from "./pages/Skills";
+import { Projects } from "./pages/Projects";
+import { Contact } from "./pages/Contact";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+
+import useLenis from "./hooks/useLenis";
 
 function App() {
-  return (
+  const lenisRef = useLenis(); // <- Agora retorna o ref
 
+  return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route index  element={<Home />} />
-          <Route path="/about" element={<div>About</div>} />
-          <Route path="/projects" element={<div>Projects</div>} />
-          <Route path="/contact" element={<div>Contact</div>} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <Header lenisRef={lenisRef} />
+      <main>
+        <section id="home">
+          <Home />
+        </section>
+          <About />
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
+      <Footer />
     </>
   );
 }
 
-export default App
+export default App;
