@@ -56,13 +56,14 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
             <ul
                 className="
                     flex flex-col md:flex-row 
-                    gap-6 md:gap-30 
+                    gap-6 md:gap-10 
                     mt-24 md:mt-auto mb-auto 
                     text-2xl md:text-3xl font-medium text-center
                 "
             >
                 {[
                     { label: "Home", id: "#home" },
+                    { label: "Objetivos", id: "#objectives" },
                     { label: "Sobre", id: "#about" },
                     { label: "Skills", id: "#skills" },
                     { label: "Projetos", id: "#projects" },
@@ -71,7 +72,7 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
                     <li
                         key={index}
                         onClick={() => handleClick(item.id)}
-                        className="group relative h-28 md:h-150 w-50 md:w-50 border border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#022747ff]"
+                        className="group relative h-25 md:h-125 w-50 md:w-45 border border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#022747ff]"
                     >
                         <span className="z-10 text-white group-hover:text-[#022747ff] transition-all duration-300">
                             {item.label}

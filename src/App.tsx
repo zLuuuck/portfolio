@@ -7,6 +7,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 import useLenis from "./hooks/useLenis";
+import Objectives from "./pages/Objectives";
 
 function App() {
   const lenisRef = useLenis(); // <- Agora retorna o ref
@@ -14,9 +15,12 @@ function App() {
   return (
     <>
       <Header lenisRef={lenisRef} />
-      <main>
+    <main className="bg-gradient-to-b from-black via-[#0d1d22] to-[#0a2a45] text-white">
         <section id="home">
           <Home />
+        </section>
+        <section id="objectives">
+          <Objectives />
         </section>
         <section id="about">
           <About />
