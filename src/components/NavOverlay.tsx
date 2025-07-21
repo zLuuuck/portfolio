@@ -45,7 +45,7 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
         >
             {/* Botão X */}
             <button
-                className="absolute top-6 right-6 text-white hover:text-purple-400 transition"
+                className="absolute top-6 right-6 text-white hover:text-[#4fc3f7] transition"
                 onClick={onClose}
                 aria-label="Fechar menu"
             >
@@ -71,25 +71,25 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
                     <li
                         key={index}
                         onClick={() => handleClick(item.id)}
-                        className="group relative h-28 md:h-150 w-50 md:w-50 border border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105"
+                        className="group relative h-28 md:h-150 w-50 md:w-50 border border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#022747ff]"
                     >
-                        <span className="z-10 text-white group-hover:text-black transition-all duration-300">
+                        <span className="z-10 text-white group-hover:text-[#022747ff] transition-all duration-300">
                             {item.label}
                         </span>
-                        <span className="absolute inset-0 bg-white scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></span>
+                        <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></span>
                     </li>
                 ))}
             </ul>
 
             {/* Social Icons */}
             <div className="flex gap-6 mb-10">
-                <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
+                <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer" className="hover:text-[#4fc3f7] transition">
                     <Github size={28} />
                 </a>
-                <a href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
+                <a href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener noreferrer" className="hover:text-[#4fc3f7] transition">
                     <Linkedin size={28} />
                 </a>
-                <a href="mailto:seu@email.com" className="hover:text-purple-400 transition">
+                <a href="mailto:seu@email.com" className="hover:text-[#4fc3f7] transition">
                     <Mail size={28} />
                 </a>
             </div>

@@ -21,13 +21,13 @@ export const Header = ({ lenisRef }: { lenisRef: RefObject<Lenis | null> }) => {
             onClick={() => setIsOpen(true)}
             aria-label="Abrir menu"
           >
-            <span className="block w-6 h-0.5 bg-white group-hover:bg-purple-400 transition"></span>
-            <span className="block w-6 h-0.5 bg-white group-hover:bg-purple-400 transition"></span>
-            <span className="block w-6 h-0.5 bg-white group-hover:bg-purple-400 transition"></span>
+            <span className="block w-6 h-0.5 bg-white group-hover:bg-[#4fc3f7] transition"></span>
+            <span className="block w-6 h-0.5 bg-white group-hover:bg-[#4fc3f7] transition"></span>
+            <span className="block w-6 h-0.5 bg-white group-hover:bg-[#4fc3f7] transition"></span>
           </button>
 
           <h1
-            className="text-xl font-bold tracking-wide cursor-pointer hover:text-purple-400 transition"
+            className="text-xl font-bold tracking-wide cursor-pointer hover:text-[#4fc3f7] transition"
             onClick={() => scrollToSection("#about")}
           >
             Lucas Toterol
