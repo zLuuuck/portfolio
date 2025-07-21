@@ -59,9 +59,9 @@ html, body {
 .shine-text {
   background: linear-gradient(
     90deg,
-    #022747ff 0%,
+    rgb(7, 91, 165) 0%,
     #4fc3f7 50%,
-    #022747ff 100%
+    rgb(4, 78, 143) 100%
   );
   background-size: 200% auto;
   background-clip: text;

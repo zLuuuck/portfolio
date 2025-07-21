@@ -27,7 +27,7 @@ export const Header = ({ lenisRef }: { lenisRef: RefObject<Lenis | null> }) => {
           </button>
 
           <h1
-            className="text-xl font-bold tracking-wide cursor-pointer hover:text-[#4fc3f7] transition"
+            className="text-xl font-bold tracking-wide cursor-pointer hover:text-[#4fc3f7] transition shine-text"
             onClick={() => scrollToSection("#about")}
           >
             Lucas Toterol

@@ -63,8 +63,8 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
             >
                 {[
                     { label: "Home", id: "#home" },
-                    { label: "Objetivos", id: "#objectives" },
                     { label: "Sobre", id: "#about" },
+                    { label: "Objetivos", id: "#objectives" },
                     { label: "Skills", id: "#skills" },
                     { label: "Projetos", id: "#projects" },
                     { label: "Contato", id: "#contact" },
