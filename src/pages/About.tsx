@@ -25,13 +25,13 @@ export const About = () => {
           </h1>
           <p className="text-lg leading-relaxed text-gray-300 text-justify">
 
-  Sou estudante de Análise e Desenvolvimento de Sistemas, com foco em cibersegurança e testes de penetração. 
-  Tenho experiência prática com labs como <span className="font-semibold shine-text">TryHackMe</span> e <span className="font-semibold shine-text"> Hack The Box </span>, 
-  além de desenvolver projetos em <span className="font-semibold shine-text">Python</span> e <span className="font-semibold shine-text">aplicações web</span>. Atuo também com sistemas <span className="font-semibold shine-text">Linux e Windows</span>, 
-  possuo conhecimento em <span className="font-semibold shine-text">montagem e manutenção de computadores</span>, e experiência com <span className="font-semibold shine-text">suporte técnico</span> (help desk). 
-  Busco constantemente aprender e aplicar meus conhecimentos em projetos práticos e <span className="font-semibold shine-text">desafios reais</span>.
+  Sou estudante de <span className="font-semibold text-[#357ab7]">Análise e Desenvolvimento de Sistemas,</span>  com foco em <span className="font-semibold text-[#357ab7]">cibersegurança</span>  e testes de penetração. 
+  Tenho experiência prática com labs como <span className="font-semibold text-[#357ab7]">TryHackMe</span> e <span className="font-semibold text-[#357ab7]"> Hack The Box </span>, 
+  além de desenvolver projetos em <span className="font-semibold text-[#357ab7]">Python</span> e <span className="font-semibold text-[#357ab7]">aplicações web</span>. Atuo também com sistemas <span className="font-semibold text-[#357ab7]">Linux e Windows</span>, 
+  possuo conhecimento em <span className="font-semibold text-[#357ab7]">montagem e manutenção de computadores</span>, e experiência com <span className="font-semibold text-[#357ab7]">suporte técnico</span> (help desk). 
+  Busco constantemente aprender e aplicar meus conhecimentos em projetos práticos e <span className="font-semibold text-[#357ab7]">desafios reais</span>.
 
-            <br /><br />u
+            <br /><br />
             Este portfólio é um reflexo da minha trajetória e dos objetivos que persigo com dedicação, sempre buscando
             impactar positivamente com o que crio.
           </p>

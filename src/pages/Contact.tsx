@@ -70,7 +70,7 @@ export const Contact: React.FC = () => {
         {/* DIREITA */}
 
         <form className="space-y-6 max-w-md mx-auto w-full">
-          <h2 className="text-xl font-semibold text-center mb-4">Entre em contato!</h2>
+          <h2 className="text-2xl font-bold text-center mb-4">Entre em contato!</h2>
 
           {[
             { label: "Nome", id: "name", type: "text" },

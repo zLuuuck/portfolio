@@ -13,8 +13,8 @@ export default function Objectives() {
                     back="Me aprofundar em Red Team e Pentest Profissional, obtendo certificações como OSCP, e contribuindo para segurança de grandes empresas."
                 />
                 <ObjectiveCard
-                    front="Concluir Meu Portfólio Profissional"
-                    back="Criar um portfólio moderno, funcional e acessível que destaque meus projetos em desenvolvimento web e segurança da informação."
+                    front="Certificações e Aprendizado Contínuo"
+                    back="Comprometido com o desenvolvimento profissional contínuo, estudo para obter certificações relevantes em cibersegurança, como CompTIA Security+, Pentest+, CEH, OSCP e AWS Certified Security – Specialty."
                 />
                 <ObjectiveCard
                     front="Desenvolvimento Pessoal e Saúde"
