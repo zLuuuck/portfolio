@@ -72,7 +72,7 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
                     <li
                         key={index}
                         onClick={() => handleClick(item.id)}
-                        className="group relative h-25 md:h-125 w-50 md:w-45 border border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#022747ff]"
+                        className="group relative h-25 md:h-125 w-50 md:w-45 border-3 border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#022747ff]"
                     >
                         <span className="z-10 text-white group-hover:text-[#022747ff] transition-all duration-300">
                             {item.label}

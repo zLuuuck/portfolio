@@ -28,7 +28,7 @@ export const ObjectiveCard = ({ front, back }: ObjectiveCardProps) => {
                 onClick={() => setFlipped(!flipped)}
             >
                 {/* Frente */}
-                <div className="absolute w-full h-full text-white rounded-2xl border border-white hover:border-[#022747ff] p-6 backface-hidden flex flex-col justify-center items-center cursor-pointer group overflow-hidden">
+                <div className="absolute w-full h-full text-white rounded-2xl border-3 border-white hover:border-[#022747ff] p-6 backface-hidden flex flex-col justify-center items-center cursor-pointer group overflow-hidden transition-all duration-500 drop-shadow-2xl hover:scale-105">
                     <span className="z-10 text-xl font-semibold text-center mb-4 transition-all duration-300 group-hover:text-[#022747ff] ">
                         {front}
                     </span>
@@ -37,8 +37,10 @@ export const ObjectiveCard = ({ front, back }: ObjectiveCardProps) => {
                 </div>
 
                 {/* Verso */}
-                <div className="absolute w-full h-full bg-transparent text-white rounded-2xl border border-white p-6 backface-hidden rotate-y-180 flex justify-center items-center text-center cursor-pointer">
-                    <span className="text-base font-medium leading-relaxed">{back}</span>
+                <div className="absolute w-full h-full text-white rounded-2xl border-3 border-white hover:border-[#022747ff] p-6 backface-hidden rotate-y-180 flex justify-center items-center text-center cursor-pointer group overflow-hidden transition-all duration-500 drop-shadow-2xl hover:scale-105 bg-transparent">
+                    <span className="z-10 font-medium leading-relaxed transition-all duration-300 group-hover:text-[#022747ff]">{back}</span>
+                    <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out" />
+
                 </div>
             </div>
         </motion.div>

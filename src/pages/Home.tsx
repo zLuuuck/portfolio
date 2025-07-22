@@ -59,7 +59,7 @@ export const Home = () => {
                 .getElementById("projects")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="group relative h-20 md:h-24 w-48 md:w-60 border border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#0f3c63ff]"
+            className="group relative h-20 md:h-24 w-48 md:w-60 border-3 border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#0f3c63ff]"
           >
             <span className="z-10 text-white group-hover:text-[#022747ff] transition-all duration-300">
               Ver Projetos
@@ -69,7 +69,7 @@ export const Home = () => {
 
           <li
             onClick={() => window.open("/cv.pdf", "_blank")}
-            className="group relative h-20 md:h-24 w-48 md:w-60 border border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#0f3c63ff]"
+            className="group relative h-20 md:h-24 w-48 md:w-60 border-3 border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#0f3c63ff]"
           >
             <span className="z-10 text-white group-hover:text-[#022747ff] transition-all duration-300">
               Baixar Currículo
