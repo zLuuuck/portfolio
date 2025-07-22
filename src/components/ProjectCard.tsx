@@ -59,6 +59,7 @@ export default function ProjectCard({ title, description, image, github, techs, 
                     techs={techs}
                     icons={icons}
                     github={github}
+                    image={image}
                     onClose={() => setOpen(false)}
                 />
             )}

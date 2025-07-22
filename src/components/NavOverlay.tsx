@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { X, Github, Linkedin, Mail } from "lucide-react";
+import { X, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 interface NavOverlayProps {
     isOpen: boolean;
@@ -84,14 +84,17 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
 
             {/* Social Icons */}
             <div className="flex gap-6 mb-10">
-                <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer" className="hover:text-[#4fc3f7] transition">
+                <a href="https://github.com/zLuuuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#4fc3f7] transition">
                     <Github size={28} />
                 </a>
-                <a href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener noreferrer" className="hover:text-[#4fc3f7] transition">
+                <a href="https://linkedin.com/in/lucastoterol" target="_blank" rel="noopener noreferrer" className="hover:text-[#4fc3f7] transition">
                     <Linkedin size={28} />
                 </a>
-                <a href="mailto:seu@email.com" className="hover:text-[#4fc3f7] transition">
+                <a href="mailto:toterol.contato@gmail.com" className="hover:text-[#4fc3f7] transition">
                     <Mail size={28} />
+                </a>
+                <a href="https://wa.me/+5541999016605" target="_blank" rel="noopener noreferrer" className="hover:text-[#4fc3f7] transition">
+                    <Phone size={28} />
                 </a>
             </div>
         </div>
