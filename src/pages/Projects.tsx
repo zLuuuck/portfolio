@@ -31,7 +31,7 @@ const projetos = [
     title: "Portfólio Pessoal",
     description: "Este é o meu portfólio pessoal, onde apresento meus projetos e habilidades. (literalmente este kk)",
     image: "/tuiuti.png",
-    github: "https://github.com/stars/zLuuuck/lists/university-projects",
+    github: "https://github.com/zLuuuck/portfolio",
     techs: ["React", "TypeScript", "TailwindCSS"],
     icons: [FaPython, FaWindows, FaFedora],
     details: "Descrição detalhada do projeto, seus objetivos e funcionalidades."
@@ -39,8 +39,8 @@ const projetos = [
     {
     title: "Matemática com Python",
     description: "Comecei a estudar Python, e fiz este projeto para praticar matemática quando estava no ensino médio.",
-    image: "/tuiuti.png",
-    github: "https://github.com/stars/zLuuuck/lists/university-projects",
+    image: "/math-python.png",
+    github: "https://github.com/zLuuuck/Matematica",
     techs: ["React", "TypeScript", "TailwindCSS"],
     icons: [FaPython, FaWindows, FaFedora],
     details: "Descrição detalhada do projeto, seus objetivos e funcionalidades."
