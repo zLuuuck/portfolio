@@ -12,10 +12,10 @@ export const Contact: React.FC = () => {
         <div className="space-y-8 max-w-md mx-auto text-center">
           <h2 className="text-2xl font-bold">Obrigado!</h2>
           <p className="text-white/80 text-justify leading-relaxed">
-  Fico extremamente feliz por você ter visitado meu portfólio! Cada parte deste site foi construída com dedicação para
-  refletir não só minhas habilidades técnicas, mas também minha paixão por aprender, evoluir e entregar resultados de
-  qualidade. Se algo chamou sua atenção, despertou curiosidade ou se você acredita que podemos colaborar de alguma forma,
-  não hesite em entrar em contato. <br/><br/>Meus contatos estão logo abaixo —sinta-se à vontade!
+            Fico extremamente feliz por você ter visitado meu portfólio! Cada parte deste site foi construída com dedicação para
+            refletir não só minhas habilidades técnicas, mas também minha paixão por aprender, evoluir e entregar resultados de
+            qualidade. Se algo chamou sua atenção, despertou curiosidade ou se você acredita que podemos colaborar de alguma forma,
+            não hesite em entrar em contato. <br /><br />Meus contatos estão logo abaixo —sinta-se à vontade!
           </p>
           <div className="flex flex-col items-center gap-4">
             <a
