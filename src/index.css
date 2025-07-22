@@ -69,3 +69,23 @@ html, body {
   color: transparent;
   animation: shine 3s linear infinite;
 }
+
+@keyframes shine-bar {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shine-bar {
+  background: linear-gradient(
+    90deg,
+    rgb(7, 91, 165) 0%,
+    #4fc3f7 50%,
+    rgb(4, 78, 143) 100%
+  );
+  background-size: 200% auto;
+  animation: shine-bar 3s linear infinite;
+}
