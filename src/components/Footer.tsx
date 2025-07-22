@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp, Phone } from "lucide-react";
 import { type RefObject } from "react";
 import Lenis from "@studio-freight/lenis";
 
@@ -54,10 +54,20 @@ export const Footer = ({ lenisRef }: FooterProps) => {
             <Linkedin size={24} />
           </a>
           <a
+            target="_blank"
+            rel="noopener noreferrer"
             href="mailto:seu@email.com"
             className="hover:text-[#4fc3f7] transition"
           >
             <Mail size={24} />
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://wa.me/+5541999016605"
+            className="hover:text-[#4fc3f7] transition"
+          >
+            <Phone size={24} />
           </a>
         </div>
       </div>

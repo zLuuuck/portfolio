@@ -14,7 +14,7 @@ export const Home = () => {
     }
   }, []);
 
-  
+
 
   return (
     <section
@@ -33,7 +33,7 @@ export const Home = () => {
       </div>
 
       {/* Texto à direita */}
-      <div className="flex flex-col max-w-xl w-full md:w-1/2 mx-auto items-center md:items-start text-center md:text-left">
+      <div className="flex flex-col max-w-xl w-full md:w-1/2 mx-auto items-center text-center ">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
           <span className="relative inline-block group">
             <span className="block text-3xl md:text-4xl">Olá, eu sou o</span>
@@ -43,12 +43,12 @@ export const Home = () => {
 
 
         <h2 className="text-lg md:text-2xl text-gray-300 mb-4">
-          Analista de Cibersegurança
+          Estudante de ADS focado em Cibersegurança e Pentest.
         </h2>
 
         <p className="text-gray-400 mb-8 text-sm md:text-base max-w-sm md:max-w-full">
-          Especializado em análise de vulnerabilidades, hardening e defesa
-          cibernética. Apaixonado por proteger sistemas, dados e usuários.
+          Estudo cibersegurança por conta própria, praticando em labs, escrevendo write-ups e desenvolvendo projetos.
+          Busco evoluir tecnicamente e contribuir para um mundo digital mais seguro.
         </p>
 
         {/* Botões */}
@@ -59,7 +59,7 @@ export const Home = () => {
                 .getElementById("projects")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="group relative h-20 md:h-24 w-48 md:w-60 border-3 border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#0f3c63ff]"
+            className="group relative h-20 md:h-24 w-48 md:w-70 border-3 border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#0f3c63ff]"
           >
             <span className="z-10 text-white group-hover:text-[#022747ff] transition-all duration-300">
               Ver Projetos
@@ -69,7 +69,7 @@ export const Home = () => {
 
           <li
             onClick={() => window.open("/cv.pdf", "_blank")}
-            className="group relative h-20 md:h-24 w-48 md:w-60 border-3 border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#0f3c63ff]"
+            className="group relative h-20 md:h-24 w-48 md:w-70 border-3 border-white rounded-2xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-2xl hover:scale-105 hover:border-[#0f3c63ff]"
           >
             <span className="z-10 text-white group-hover:text-[#022747ff] transition-all duration-300">
               Baixar Currículo
