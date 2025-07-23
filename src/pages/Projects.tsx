@@ -31,7 +31,7 @@ const projetos = [
     techs: ["Ferramentas Web", "Libre Office"],
     icons: [MdWeb, SiLibreoffice],
     details:
-      "Este repositório agrupa trabalhos e projetos desenvolvidos ao longo da graduação em Análise e Desenvolvimento de Sistemas. Inclui aplicações web, scripts em Python, banco de dados, algoritmos e outras implementações relacionadas às disciplinas de programação, engenharia de software, estrutura de dados, segurança e afins. A finalidade do projeto é documentar a evolução acadêmica, facilitar futuras consultas e demonstrar domínio dos conteúdos trabalhados em sala de aula."
+      "Este repositório agrupa trabalhos e projetos desenvolvidos ao longo da graduação em Análise e Desenvolvimento de Sistemas. Inclui aplicações web, scripts em Python, banco de dados, algoritmos e outras implementações relacionadas às disciplinas de programação, estrutura de dados, segurança e afins. A finalidade do projeto é documentar a evolução acadêmica, facilitar futuras consultas e demonstrar domínio dos conteúdos trabalhados em sala de aula."
   },
   {
     title: "Portfólio Pessoal",

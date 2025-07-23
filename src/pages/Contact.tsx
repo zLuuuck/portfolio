@@ -1,8 +1,42 @@
+import React, { useState } from "react";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
-import React from "react";
-
 export const Contact: React.FC = () => {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const newErrors: Record<string, string> = {};
+
+  const fields = ["name", "email", "phone", "subject", "message"];
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[0-9()+\s-]+$/;
+
+  fields.forEach((id) => {
+    const el = form.elements.namedItem(id) as HTMLInputElement | HTMLTextAreaElement;
+    const value = el.value.trim();
+
+    if (!value) {
+      newErrors[id] = "Preencha este campo.";
+    } else {
+      if (id === "email" && !emailRegex.test(value)) {
+        newErrors[id] = "Preencha este campo corretamente.";
+      }
+      if (id === "phone" && !phoneRegex.test(value)) {
+        newErrors[id] = "Preencha este campo corretamente.";
+      }
+    }
+  });
+
+  setErrors(newErrors);
+
+  if (Object.keys(newErrors).length === 0) {
+    alert("Formulário enviado com sucesso!");
+    form.reset();
+  }
+};
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-white px-4 py-10">
       <h1 className="text-4xl sm:text-5xl font-bold mb-6 shine-text text-center p-6">Contato</h1>
@@ -68,36 +102,70 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* DIREITA */}
-
-        <form className="space-y-6 max-w-md mx-auto w-full">
+        <form
+          className="space-y-6 max-w-md mx-auto w-full"
+          noValidate
+          onSubmit={handleSubmit}
+        >
           <h2 className="text-2xl font-bold text-center mb-4">Entre em contato!</h2>
 
           {[
-            { label: "Nome", id: "name", type: "text" },
-            { label: "Email", id: "email", type: "email" },
-            { label: "Telefone", id: "phone", type: "tel" },
-            { label: "Assunto", id: "subject", type: "text" },
-          ].map(({ label, id, type }) => (
+            {
+              label: "Nome",
+              id: "name",
+              type: "text",
+            },
+            {
+              label: "Seuemail@email.com",
+              id: "email",
+              type: "email",
+              pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            },
+            {
+              label: "Telefone",
+              id: "phone",
+              type: "tel",
+              pattern: "^[0-9()+\\s-]+$",
+            },
+            {
+              label: "Assunto",
+              id: "subject",
+              type: "text",
+            },
+          ].map(({ label, id, type, pattern }) => (
             <div className="relative" key={id}>
               <input
                 id={id}
                 name={id}
                 type={type}
-                placeholder=" "
+                pattern={pattern}
                 required
-                className="peer w-full px-3 py-3.5 border-2 border-white bg-transparent text-white rounded-xl appearance-none focus:outline-none focus:border-[#0f3c63ff] transition-colors"
+                placeholder=" "
+                className={`peer w-full px-3 py-3.5 border-2 ${errors[id] ? "border-red-500" : "border-white"
+                  } bg-transparent text-white rounded-xl appearance-none focus:outline-none focus:border-[#0f3c63ff] transition-colors`}
+                onInvalid={(e) =>
+                  (e.currentTarget as HTMLInputElement).setCustomValidity(
+                    "Preencha este campo corretamente"
+                  )
+                }
+                onInput={(e) =>
+                  (e.currentTarget as HTMLInputElement).setCustomValidity("")
+                }
               />
               <label
                 htmlFor={id}
                 className="absolute text-base text-white/40 duration-300 transform -translate-y-7 scale-75 top-4 z-10 origin-[0] bg-[#0b293e] border-transparent rounded-xl px-2 left-1
-                   peer-focus:text-[#0f3c63ff]
-                   peer-placeholder-shown:scale-100
-                   peer-placeholder-shown:translate-y-0
-                   peer-focus:scale-75
-                   peer-focus:-translate-y-7"
+           peer-focus:text-[#357ab7]
+           peer-placeholder-shown:scale-100
+           peer-placeholder-shown:translate-y-0
+           peer-focus:scale-75
+           peer-focus:-translate-y-7"
               >
                 {label}
               </label>
+              {errors[id] && (
+                <p className="text-sm text-red-400 mt-1 px-1">{errors[id]}</p>
+              )}
             </div>
           ))}
 
@@ -108,19 +176,31 @@ export const Contact: React.FC = () => {
               placeholder=" "
               required
               rows={4}
-              className="peer w-full px-3 py-3.5 border-2 border-white bg-transparent text-white rounded-xl appearance-none focus:outline-none focus:border-[#0f3c63ff] transition-colors resize-none"
+              className={`peer w-full px-3 py-3.5 border-2 ${errors["message"] ? "border-red-500" : "border-white"
+                } bg-transparent text-white rounded-xl appearance-none focus:outline-none focus:border-[#0f3c63ff] transition-colors resize-none`}
+              onInvalid={(e) =>
+                (e.currentTarget as HTMLTextAreaElement).setCustomValidity(
+                  "Preencha este campo corretamente"
+                )
+              }
+              onInput={(e) =>
+                (e.currentTarget as HTMLTextAreaElement).setCustomValidity("")
+              }
             />
             <label
               htmlFor="message"
               className="absolute text-base text-white/40 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] border-transparent rounded-xl bg-[#0b293e] px-2 left-1
-                 peer-focus:text-[#0f3c63ff]
-                 peer-placeholder-shown:scale-100
-                 peer-placeholder-shown:translate-y-0
-                 peer-focus:scale-75
-                 peer-focus:-translate-y-6"
+         peer-focus:text-[#357ab7]
+         peer-placeholder-shown:scale-100
+         peer-placeholder-shown:translate-y-0
+         peer-focus:scale-75
+         peer-focus:-translate-y-6"
             >
               Mensagem
             </label>
+            {errors["message"] && (
+              <p className="text-sm text-red-400 mt-1 px-1">{errors["message"]}</p>
+            )}
           </div>
 
           <button
@@ -128,9 +208,12 @@ export const Contact: React.FC = () => {
             className="group relative h-12 w-full border-2 border-white rounded-xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-xl hover:scale-105 hover:border-[#0f3c63ff]"
           >
             <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></span>
-            <span className="z-10 flex items-center gap-2 text-white group-hover:text-[#022747ff] transition-all duration-300">Enviar</span>
+            <span className="z-10 flex items-center gap-2 text-white group-hover:text-[#022747ff] transition-all duration-300">
+              Enviar
+            </span>
           </button>
         </form>
+
       </div>
     </section>
   );
