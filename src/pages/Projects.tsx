@@ -37,7 +37,7 @@ const projetos = [
     title: "Portfólio Pessoal",
     description:
       "Este é o meu portfólio pessoal, desenvolvido para apresentar meus projetos, habilidades e trajetória na área de tecnologia.",
-    image: "/tuiuti.png",
+    image: "/portfolio.png",
     github: "https://github.com/zLuuuck/portfolio",
     techs: ["React", "TypeScript", "TailwindCSS", "Git"],
     icons: [FaReact, SiTypescript, SiTailwindcss, FaGitAlt],

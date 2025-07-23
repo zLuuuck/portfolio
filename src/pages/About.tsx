@@ -25,8 +25,8 @@ export const About = () => {
           </h1>
           <p className="text-lg leading-relaxed text-gray-300 text-justify">
 
-  Sou estudante de <span className="font-semibold text-[#357ab7]">Análise e Desenvolvimento de Sistemas,</span>  com foco em <span className="font-semibold text-[#357ab7]">cibersegurança</span>  e testes de penetração. 
-  Tenho experiência prática com labs como <span className="font-semibold text-[#357ab7]">TryHackMe</span> e <span className="font-semibold text-[#357ab7]"> Hack The Box </span>, 
+  Sou estudante de <span className="font-semibold text-[#357ab7]">Análise e Desenvolvimento de Sistemas</span>  da Universidade Tuiuti do Paraná,  com foco em <span className="font-semibold text-[#357ab7]">cibersegurança</span>  e testes de penetração. 
+  Tenho <span className="font-semibold text-[#357ab7]">experiência prática</span> com labs como <span className="font-semibold text-[#357ab7]">TryHackMe</span> e <span className="font-semibold text-[#357ab7]"> Hack The Box </span>, 
   além de desenvolver projetos em <span className="font-semibold text-[#357ab7]">Python</span> e <span className="font-semibold text-[#357ab7]">aplicações web</span>. Atuo também com sistemas <span className="font-semibold text-[#357ab7]">Linux e Windows</span>, 
   possuo conhecimento em <span className="font-semibold text-[#357ab7]">montagem e manutenção de computadores</span>, e experiência com <span className="font-semibold text-[#357ab7]">suporte técnico</span> (help desk). 
   Busco constantemente aprender e aplicar meus conhecimentos em projetos práticos e <span className="font-semibold text-[#357ab7]">desafios reais</span>.
