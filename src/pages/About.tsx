@@ -46,7 +46,7 @@ export const About = () => {
         >
           <div className="absolute w-64 h-64 md:w-[440px] md:h-[440px] rounded-2xl bg-gradient-to-r from-[#0284c7] via-[#3b82f6] to-[#0ea5e9] blur-3xl opacity-40 animate-spin-slow" />
           <img
-            src="/foto3.gif"
+            src="/eu2.jpeg"
             alt="Lucas Toterol"
             className="w-100 h-100 md:w-[440px] md:h-[440px] object-cover rounded-2xl border-[10px] border-[#022747] shadow-2xl relative z-10"
           />
