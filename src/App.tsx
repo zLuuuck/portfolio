@@ -1,6 +1,6 @@
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
-import { Skills } from "./pages/Skills"; 
+import { Skills } from "./pages/Skills";
 import { Projects } from "./pages/Projects";
 import { Contact } from "./pages/Contact";
 import { Header } from "./components/Header";
@@ -15,17 +15,16 @@ function App() {
   return (
     <>
       <Header lenisRef={lenisRef} />
-    <main className="bg-gradient-to-b from-black via-[#0d1d22] to-[#0a2a45] text-white">
+      <main className="bg-gradient-to-b from-black via-[#0d1d22] to-[#0a2a45] text-white">
         <section id="home">
           <Home />
         </section>
-                <section id="about">
+        <section id="about">
           <About />
         </section>
         <section id="objectives">
           <Objectives />
         </section>
-
         <section id="skills">
           <Skills />
         </section>
