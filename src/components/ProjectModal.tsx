@@ -39,7 +39,7 @@ export default function ProjectModal({
             onClick={onClose}
         >
             <motion.div
-                className="relative max-w-2xl w-full bg-gradient-to-br from-[#0d1d22] to-[#0a2a45] border border-[#357ab7]/50 rounded-xl overflow-hidden shadow-2xl"
+                className="relative max-w-2xl w-full bg-gradient-to-br from-[#0d1d22] to-[#0a2a45] border-3 border-[#357ab7]/50 rounded-xl overflow-hidden shadow-2xl"
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
@@ -84,7 +84,7 @@ export default function ProjectModal({
                         </div>
 
                         {/* Descrição */}
-                        <div className="prose prose-invert max-w-none">
+                        <div className="prose prose-invert max-w-none text-justify">
                             {description.split('\n').map((paragraph, i) => (
                                 <p key={i} className="mb-4 last:mb-0">
                                     {paragraph}
@@ -98,11 +98,20 @@ export default function ProjectModal({
                                 href={github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className=" group flex items-center gap-2 px-6 py-3 bg-[#357ab7] hover:bg-[#2a6191] rounded-lg transition-colors"
+                                className="group relative h-14 w-48 md:h-16 md:w-52 border-2 border-white rounded-xl overflow-hidden 
+              cursor-pointer flex items-center justify-center gap-2 transition-all duration-500 hover:scale-105 
+              hover:border-[#022747]"
                             >
-                                <Github className="w-5 h-5" />
-                                Ver no GitHub
-                                <span className="text-sm text-white/70 group-hover:text-white transition-colors" />
+                                {/* Ícone e texto */}
+                                <span className="z-10 flex items-center gap-2 text-white font-medium group-hover:text-[#022747ff] 
+                     transition-colors duration-300">
+                                    <Github className="w-5 h-5" />
+                                    Ver no GitHub
+                                </span>
+
+                                {/* Efeito de background animado */}
+                                <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom 
+                     transition-transform duration-300 ease-in-out" />
                             </a>
                         </div>
                     </div>

@@ -6,9 +6,9 @@ import { Notification } from "../components/Notification";
 export const Contact = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [notification, setNotification] = useState<{ 
-    message: string; 
-    type: "success" | "error" 
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: "success" | "error"
   } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,11 +27,11 @@ export const Contact = () => {
       const value = el.value.trim();
 
       if (!value) {
-        newErrors[id] = "Campo obrigatório";
+        newErrors[id] = "* Campo obrigatório";
       } else if (id === "email" && !emailRegex.test(value)) {
-        newErrors[id] = "E-mail inválido";
+        newErrors[id] = "* E-mail inválido";
       } else if (id === "phone" && !phoneRegex.test(value)) {
-        newErrors[id] = "Telefone inválido (ex: (41) 99999-9999)";
+        newErrors[id] = "* Telefone inválido (ex: (41) 99999-9999)";
       }
     });
 
@@ -45,15 +45,15 @@ export const Contact = () => {
           form,
           "awzOfUB0HNJqOCOLh"
         );
-        setNotification({ 
-          message: "Mensagem enviada com sucesso!", 
-          type: "success" 
+        setNotification({
+          message: "Mensagem enviada com sucesso!",
+          type: "success"
         });
         form.reset();
       } catch (error) {
-        setNotification({ 
-          message: "Erro ao enviar mensagem. Tente novamente mais tarde.", 
-          type: "error" 
+        setNotification({
+          message: "Erro ao enviar mensagem. Tente novamente mais tarde.",
+          type: "error"
         });
       }
     }
@@ -63,7 +63,7 @@ export const Contact = () => {
   const formatPhone = (value: string) => {
     const numbers = value.replace(/\D/g, '');
     let formatted = numbers;
-    
+
     if (numbers.length > 0) {
       formatted = `(${numbers.substring(0, 2)}`;
       if (numbers.length > 2) {
@@ -73,7 +73,7 @@ export const Contact = () => {
         }
       }
     }
-    
+
     return formatted;
   };
 
@@ -95,36 +95,39 @@ export const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full">
             {/* Seção de Informações */}
-            <div className="bg-gradient-to-br from-[#0d1d22]/70 to-[#0a2a45]/70 p-6 sm:p-8 rounded-xl border border-white/20 backdrop-blur-sm">
+            <div className="p-6 sm:p-8 rounded-xl border-2 border-white backdrop-blur-xl bg-black/20">
               <h2 className="text-2xl font-bold mb-6 text-center">Vamos conversar!</h2>
-              
-              <p className="text-white/80 mb-8 leading-relaxed">
-                Obrigado pelo interesse em entrar em contato! Estou sempre aberto a novas oportunidades, 
-                colaborações ou simplesmente para bater um papo sobre tecnologia e inovação.
-              </p>
 
-              <div className="space-y-4">
+              <p className="text-white/80 mb-8 leading-relaxed text-justify">
+                Fico extremamente feliz por você ter visitado meu portfólio! Cada parte deste site foi construída com dedicação
+                para refletir não só minhas habilidades técnicas, mas também minha paixão por aprender, evoluir e entregar
+                resultados de qualidade. Se algo chamou sua atenção, despertou curiosidade ou se você acredita que podemos
+                colaborar de alguma forma, não hesite em entrar em contato.
+                <br />
+          Meus contatos estão logo abaixo — sinta-se à vontade! — Clique para ser redirecionado
+              </p>
+              <div className="space-y-8">
                 {[
                   {
-                    icon: <Mail className="w-5 h-5 text-[#357ab7]" />,
+                    icon: <Mail className="w-5 h-5 group-hover:text-[#022747ff] transition-colors" />,
                     label: "E-mail",
                     value: "toterol.contato@gmail.com",
                     href: "mailto:toterol.contato@gmail.com"
                   },
                   {
-                    icon: <Phone className="w-5 h-5 text-[#357ab7]" />,
+                    icon: <Phone className="w-5 h-5 group-hover:text-[#022747ff] transition-colors" />,
                     label: "Telefone/WhatsApp",
                     value: "(41) 99901-6605",
                     href: "https://wa.me/+5541999016605"
                   },
                   {
-                    icon: <Github className="w-5 h-5 text-[#357ab7]" />,
+                    icon: <Github className="w-5 h-5 group-hover:text-[#022747ff] transition-colors" />,
                     label: "GitHub",
                     value: "github.com/zLuuuck",
                     href: "https://github.com/zLuuuck"
                   },
                   {
-                    icon: <Linkedin className="w-5 h-5 text-[#357ab7]" />,
+                    icon: <Linkedin className="w-5 h-5 group-hover:text-[#022747ff] transition-colors" />,
                     label: "LinkedIn",
                     value: "linkedin.com/in/lucastoterol",
                     href: "https://linkedin.com/in/lucastoterol"
@@ -135,44 +138,52 @@ export const Contact = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-3 hover:bg-white/5 rounded-lg transition-colors"
+                    className="group relative h-14 w-full border-2 border-white rounded-xl overflow-hidden 
+                cursor-pointer flex items-center px-4 p-10 transition-all duration-500 hover:scale-[1.02] 
+                hover:border-[#022747]"
                   >
-                    <div className="bg-white/10 p-2 rounded-lg">
+                    {/* Ícone com background */}
+                    <div className="z-10 bg-white/10 p-2 rounded-lg mr-3">
                       {item.icon}
                     </div>
-                    <div className="flex-1">
-                      <p className="text-sm text-white/60">{item.label}</p>
-                      <p className="font-medium">{item.value}</p>
+
+                    {/* Textos */}
+                    <div className="z-10 flex-1 text-left">
+                      <p className="text-xs sm:text-sm text-white/60 group-hover:text-[#022747ff] transition-colors">
+                        {item.label}
+                      </p>
+                      <p className="text-xs sm:text-base font-medium text-white group-hover:text-[#022747ff] transition-colors">
+                        {item.value}
+                      </p>
                     </div>
+
+                    {/* Efeito de background animado (igual aos botões) */}
+                    <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom 
+                     transition-transform duration-300 ease-in-out" />
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Formulário */}
-            <div className="bg-gradient-to-br from-[#0d1d22]/70 to-[#0a2a45]/70 p-6 sm:p-8 rounded-xl border border-white/20 backdrop-blur-sm">
+            {/* Formulário com inputs customizados */}
+            <div className=" p-6 sm:p-8 rounded-xl border-2 border-white backdrop-blur-xl bg-black/20">
               <h2 className="text-2xl font-bold mb-6 text-center">Envie uma mensagem</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-5">
+
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {[
                   { id: "name", label: "Nome", type: "text" },
-                  { id: "email", label: "E-mail", type: "email" },
+                  { id: "email", label: "Seuemail@email.com", type: "email" },
                   { id: "phone", label: "Telefone", type: "tel" },
                   { id: "subject", label: "Assunto", type: "text" },
                 ].map((field) => (
-                  <div key={field.id}>
-                    <label htmlFor={field.id} className="block text-sm font-medium mb-1">
-                      {field.label} {errors[field.id] && (
-                        <span className="text-red-400 text-xs ml-1">• {errors[field.id]}</span>
-                      )}
-                    </label>
+                  <div key={field.id} className="relative">
                     <input
                       id={field.id}
                       name={field.id}
                       type={field.type}
-                      className={`w-full px-4 py-3 bg-white/5 border ${
-                        errors[field.id] ? "border-red-500" : "border-white/20"
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#357ab7] focus:border-transparent transition-colors`}
+                      placeholder=" "
+                      className={`peer w-full px-4 py-3.5 border-2 ${errors[field.id] ? "border-red-500" : "border-white/40"
+                        } bg-transparent rounded-lg focus:outline-none focus:border-[#357ab7] transition-colors`}
                       onChange={(e) => {
                         if (field.id === "phone") {
                           e.target.value = formatPhone(e.target.value);
@@ -182,45 +193,76 @@ export const Contact = () => {
                         }
                       }}
                     />
+                    <label
+                      htmlFor={field.id}
+                      className={`absolute text-sm duration-300 transform -translate-y-6 scale-75 top-4 z-10 origin-[0] px-2 left-2 ${errors[field.id] ? "text-red-400" : "text-white/60"
+                        } peer-focus:text-[#357ab7] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 bg-[#091f32] rounded-lg`}
+                    >
+                      {field.label}
+                    </label>
+                    <div className={`h-5 mt-1 overflow-hidden transition-all duration-200 ${errors[field.id] ? "opacity-100" : "opacity-0"
+                      }`}>
+                      <p className="text-xs text-red-400">
+                        {errors[field.id] === " " ? "Campo obrigatório" : errors[field.id]}
+                      </p>
+                    </div>
                   </div>
                 ))}
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-1">
-                    Mensagem {errors.message && (
-                      <span className="text-red-400 text-xs ml-1">• {errors.message}</span>
-                    )}
-                  </label>
+                {/* Textarea com floating label */}
+                <div className="relative">
                   <textarea
                     id="message"
                     name="message"
+                    placeholder=" "
                     rows={5}
-                    className={`w-full px-4 py-3 bg-white/5 border ${
-                      errors.message ? "border-red-500" : "border-white/20"
-                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#357ab7] focus:border-transparent transition-colors`}
+                    className={`peer w-full px-4 py-3.5 border-2 ${errors.message ? "border-red-500" : "border-white/40"
+                      } bg-transparent rounded-lg focus:outline-none focus:border-[#357ab7] transition-colors resize-none`}
                     onChange={() => {
                       if (errors.message) {
                         setErrors(prev => ({ ...prev, message: "" }));
                       }
                     }}
                   />
+                  <label
+                    htmlFor="message"
+                    className={`absolute text-sm duration-300 transform -translate-y-5 scale-75 top-3 z-10 origin-[0] px-2 left-2 ${errors.message ? "text-red-400" : "text-white/60"
+                      } peer-focus:text-[#357ab7] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-2 peer-focus:scale-75 peer-focus:-translate-y-5 bg-[#092135] rounded-lg`}
+                  >
+                    Mensagem
+                  </label>
+                  <div className={`h-5 mt-1 overflow-hidden transition-all duration-200 ${errors.message ? "opacity-100" : "opacity-0"
+                    }`}>
+                    <p className="text-xs text-red-400">
+                      {errors.message === " " ? "Campo obrigatório" : errors.message}
+                    </p>
+                  </div>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#357ab7] hover:bg-[#2a6191] rounded-lg font-medium transition-colors ${
-                    isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                  }`}
+                  className="group relative h-14 w-full md:h-16 border-2 border-white rounded-xl overflow-hidden 
+            cursor-pointer flex items-center justify-center transition-all duration-500 hover:scale-105 
+            hover:border-[#022747] disabled:hover:scale-100 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? (
-                    <span className="inline-block h-5 w-5 border-2 border-white/80 border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      Enviar mensagem
-                    </>
-                  )}
+                  {/* Texto ou ícone de loading */}
+                  <span className="z-10 flex items-center gap-2 text-white font-medium group-hover:text-[#022747] 
+                   transition-colors duration-300">
+                    {isSubmitting ? (
+                      <span className="inline-block h-5 w-5 border-2 border-white/80 border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Enviar mensagem
+                      </>
+                    )}
+                  </span>
+
+                  {/* Efeito de background animado */}
+                  <span className={`absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom 
+                   transition-transform duration-300 ease-in-out ${isSubmitting ? "opacity-50" : ""
+                    }`} />
                 </button>
               </form>
             </div>

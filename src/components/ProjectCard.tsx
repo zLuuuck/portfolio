@@ -41,7 +41,7 @@ export default function ProjectCard({
                     delay: delay
                 }}
                 viewport={{ once: true, margin: "0px 0px -50px 0px" }}
-                className="group relative w-full max-w-[500px] border-2 border-white/30 hover:border-[#357ab7] rounded-xl overflow-hidden cursor-pointer bg-gradient-to-b from-[#0d1d22] to-[#0a2a45] shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative w-full max-w-[500px] border-2 md:border-3 border-white hover:border-[#357ab7] rounded-xl overflow-hidden cursor-pointer bg-gradient-to-b from-[#0d1d22] to-[#0a2a45] shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() => setOpen(true)}
             >
                 {/* Overlay ao passar o mouse */}
