@@ -9,13 +9,15 @@ export default function Objectives() {
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl w-full px-4">
                 <ObjectiveCard
-                    front="Especialista em Cibersegurança"
-                    back="Me aprofundar em Red Team e Pentest Profissional, obtendo certificações como OSCP, e contribuindo para segurança de grandes empresas."
+                    front="Aprimorar Habilidades em Cibersegurança"
+                    back="Atuar com Red Team e testes de intrusão em ambientes reais, identificando vulnerabilidades críticas e fortalecendo a segurança de grandes organizações."
                 />
+
                 <ObjectiveCard
                     front="Certificações e Aprendizado Contínuo"
                     back="Comprometido com o desenvolvimento profissional contínuo, estudo para obter certificações relevantes em cibersegurança, como CompTIA Security+, Pentest+, CEH, OSCP e AWS Certified Security – Specialty."
                 />
+                
                 <ObjectiveCard
                     front="Desenvolvimento Pessoal e Saúde"
                     back="Manter uma rotina saudável com treinos diários, boa alimentação e equilíbrio mental, focando em qualidade de vida e produtividade."
