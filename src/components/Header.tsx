@@ -14,7 +14,7 @@ export const Header = ({ lenisRef }: { lenisRef: RefObject<Lenis | null> }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-40 px-6 py-4 flex justify-between items-center bg-black/30 backdrop-blur-md text-white">
+      <header className="fixed top-0 left-0 w-full h-15 z-40 px-6 py-4 flex justify-between items-center bg-black/30 backdrop-blur-md text-white">
         <div className="flex items-center gap-4">
           <button
             className="flex flex-col gap-[6px] cursor-pointer group"

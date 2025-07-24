@@ -16,7 +16,7 @@ function App() {
     <>
       <Header lenisRef={lenisRef} />
       <main className="mx-auto min-w-screen bg-gradient-to-b from-black via-[#0d1d22] to-[#0a2a45] text-white">
-        {/* Removi o container que limitava a largura */}
+        <div className="h-15 xl:h-0"></div>
         <section id="home">
           <Home />
         </section>
