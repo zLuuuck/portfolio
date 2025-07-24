@@ -244,7 +244,7 @@ export const Skills = () => {
           Aqui estão algumas das tecnologias com as quais trabalho e estudo frequentemente.
           Clique em uma para saber mais detalhes.
         </p>
-        <div className="m-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {hardSkills.map((skill) => (
             <SkillCard
               key={skill.id}

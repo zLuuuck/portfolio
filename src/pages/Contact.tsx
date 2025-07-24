@@ -1,62 +1,84 @@
 import React, { useState } from "react";
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import { Notification } from "../components/Notification"; // ajuste o caminho se necessário
+import { Notification } from "../components/Notification";
 
 export const Contact = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [notification, setNotification] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState<{ 
+    message: string; 
+    type: "success" | "error" 
+  } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const form = e.currentTarget;
     const newErrors: Record<string, string> = {};
 
+    // Validação dos campos
     const fields = ["name", "email", "phone", "subject", "message"];
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[0-9()+\s-]+$/;
+    const phoneRegex = /^\(?\d{2}\)?[\s-]?\d{5}-?\d{4}$/;
 
     fields.forEach((id) => {
       const el = form.elements.namedItem(id) as HTMLInputElement | HTMLTextAreaElement;
       const value = el.value.trim();
 
       if (!value) {
-        newErrors[id] = "Preencha este campo.";
-      } else {
-        if (id === "email" && !emailRegex.test(value)) {
-          newErrors[id] = "Preencha este campo corretamente.";
-        }
-        if (id === "phone" && !phoneRegex.test(value)) {
-          newErrors[id] = "Preencha este campo corretamente.";
-        }
+        newErrors[id] = "Campo obrigatório";
+      } else if (id === "email" && !emailRegex.test(value)) {
+        newErrors[id] = "E-mail inválido";
+      } else if (id === "phone" && !phoneRegex.test(value)) {
+        newErrors[id] = "Telefone inválido (ex: (41) 99999-9999)";
       }
     });
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      emailjs
-        .sendForm(
+      try {
+        await emailjs.sendForm(
           "service_9f9bxwm",
           "template_19c8zao",
           form,
           "awzOfUB0HNJqOCOLh"
-        )
-        .then(() => {
-          setNotification({ message: "Mensagem enviada com sucesso!", type: "success" });
-          form.reset();
-          setErrors({});
-        })
-        .catch(() => {
-          setNotification({ message: "Erro ao enviar a mensagem.", type: "error" });
+        );
+        setNotification({ 
+          message: "Mensagem enviada com sucesso!", 
+          type: "success" 
         });
+        form.reset();
+      } catch (error) {
+        setNotification({ 
+          message: "Erro ao enviar mensagem. Tente novamente mais tarde.", 
+          type: "error" 
+        });
+      }
     }
+    setIsSubmitting(false);
+  };
+
+  const formatPhone = (value: string) => {
+    const numbers = value.replace(/\D/g, '');
+    let formatted = numbers;
+    
+    if (numbers.length > 0) {
+      formatted = `(${numbers.substring(0, 2)}`;
+      if (numbers.length > 2) {
+        formatted += `) ${numbers.substring(2, 7)}`;
+        if (numbers.length > 7) {
+          formatted += `-${numbers.substring(7, 11)}`;
+        }
+      }
+    }
+    
+    return formatted;
   };
 
   return (
     <>
-
-      {/* 🔔 Notificação */}
       {notification && (
         <Notification
           message={notification.message}
@@ -65,177 +87,144 @@ export const Contact = () => {
         />
       )}
 
+      <section className="min-h-screen flex flex-col items-center justify-center text-white px-4 py-12 sm:py-16">
+        <div className="w-full max-w-6xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 text-center shine-text">
+            Contato
+          </h1>
 
-      {/* 🌐 Seção de contato */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-white px-4 py-10">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6 shine-text text-center p-6">Contato</h1>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full">
+            {/* Seção de Informações */}
+            <div className="bg-gradient-to-br from-[#0d1d22]/70 to-[#0a2a45]/70 p-6 sm:p-8 rounded-xl border border-white/20 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold mb-6 text-center">Vamos conversar!</h2>
+              
+              <p className="text-white/80 mb-8 leading-relaxed">
+                Obrigado pelo interesse em entrar em contato! Estou sempre aberto a novas oportunidades, 
+                colaborações ou simplesmente para bater um papo sobre tecnologia e inovação.
+              </p>
 
-        <div className="grid md:grid-cols-2 gap-10 w-full max-w-5xl border-3 border-white p-6 rounded-3xl backdrop-blur-md">
-          {/* LADO ESQUERDO */}
-          <div className="space-y-8 max-w-md mx-auto text-center">
-            <h2 className="text-2xl font-bold">Obrigado!</h2>
-            <p className="text-white/80 text-justify leading-relaxed">
-              Fico extremamente feliz por você ter visitado meu portfólio! Cada parte deste site foi construída com dedicação
-              para refletir não só minhas habilidades técnicas, mas também minha paixão por aprender, evoluir e entregar
-              resultados de qualidade. Se algo chamou sua atenção, despertou curiosidade ou se você acredita que podemos
-              colaborar de alguma forma, não hesite em entrar em contato.
-              <br />
-              <br />
-              Meus contatos estão logo abaixo — sinta-se à vontade!
-            </p>
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: <Mail className="w-5 h-5 text-[#357ab7]" />,
+                    label: "E-mail",
+                    value: "toterol.contato@gmail.com",
+                    href: "mailto:toterol.contato@gmail.com"
+                  },
+                  {
+                    icon: <Phone className="w-5 h-5 text-[#357ab7]" />,
+                    label: "Telefone/WhatsApp",
+                    value: "(41) 99901-6605",
+                    href: "https://wa.me/+5541999016605"
+                  },
+                  {
+                    icon: <Github className="w-5 h-5 text-[#357ab7]" />,
+                    label: "GitHub",
+                    value: "github.com/zLuuuck",
+                    href: "https://github.com/zLuuuck"
+                  },
+                  {
+                    icon: <Linkedin className="w-5 h-5 text-[#357ab7]" />,
+                    label: "LinkedIn",
+                    value: "linkedin.com/in/lucastoterol",
+                    href: "https://linkedin.com/in/lucastoterol"
+                  }
+                ].map((item, index) => (
+                  <a
+                    key={index}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-3 hover:bg-white/5 rounded-lg transition-colors"
+                  >
+                    <div className="bg-white/10 p-2 rounded-lg">
+                      {item.icon}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm text-white/60">{item.label}</p>
+                      <p className="font-medium">{item.value}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
 
-            <div className="flex flex-col items-center gap-4">
-              <a
-                href="https://github.com/zLuuuck"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative h-12 w-64 border-2 border-white rounded-xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-xl hover:scale-105 hover:border-[#0f3c63ff]"
-              >
-                <span className="z-10 flex items-center gap-2 text-white group-hover:text-[#022747ff] transition-all duration-300">
-                  <Github className="w-5 h-5" /> GitHub
-                </span>
-                <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></span>
-              </a>
+            {/* Formulário */}
+            <div className="bg-gradient-to-br from-[#0d1d22]/70 to-[#0a2a45]/70 p-6 sm:p-8 rounded-xl border border-white/20 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold mb-6 text-center">Envie uma mensagem</h2>
+              
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {[
+                  { id: "name", label: "Nome", type: "text" },
+                  { id: "email", label: "E-mail", type: "email" },
+                  { id: "phone", label: "Telefone", type: "tel" },
+                  { id: "subject", label: "Assunto", type: "text" },
+                ].map((field) => (
+                  <div key={field.id}>
+                    <label htmlFor={field.id} className="block text-sm font-medium mb-1">
+                      {field.label} {errors[field.id] && (
+                        <span className="text-red-400 text-xs ml-1">• {errors[field.id]}</span>
+                      )}
+                    </label>
+                    <input
+                      id={field.id}
+                      name={field.id}
+                      type={field.type}
+                      className={`w-full px-4 py-3 bg-white/5 border ${
+                        errors[field.id] ? "border-red-500" : "border-white/20"
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#357ab7] focus:border-transparent transition-colors`}
+                      onChange={(e) => {
+                        if (field.id === "phone") {
+                          e.target.value = formatPhone(e.target.value);
+                        }
+                        if (errors[field.id]) {
+                          setErrors(prev => ({ ...prev, [field.id]: "" }));
+                        }
+                      }}
+                    />
+                  </div>
+                ))}
 
-              <a
-                href="https://linkedin.com/in/lucastoterol"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative h-12 w-64 border-2 border-white rounded-xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-xl hover:scale-105 hover:border-[#0f3c63ff]"
-              >
-                <span className="z-10 flex items-center gap-2 text-white group-hover:text-[#022747ff] transition-all duration-300">
-                  <Linkedin className="w-5 h-5" /> LinkedIn
-                </span>
-                <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></span>
-              </a>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-1">
+                    Mensagem {errors.message && (
+                      <span className="text-red-400 text-xs ml-1">• {errors.message}</span>
+                    )}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    className={`w-full px-4 py-3 bg-white/5 border ${
+                      errors.message ? "border-red-500" : "border-white/20"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-[#357ab7] focus:border-transparent transition-colors`}
+                    onChange={() => {
+                      if (errors.message) {
+                        setErrors(prev => ({ ...prev, message: "" }));
+                      }
+                    }}
+                  />
+                </div>
 
-              <a
-                href="mailto:toterol.contato@gmail.com"
-                className="group relative h-12 w-64 border-2 border-white rounded-xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-xl hover:scale-105 hover:border-[#0f3c63ff]"
-              >
-                <span className="z-10 flex items-center gap-2 text-white group-hover:text-[#022747ff] transition-all duration-300">
-                  <Mail className="w-5 h-5" /> toterol.contato@gmail.com
-                </span>
-                <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></span>
-              </a>
-
-              <a
-                href="https://wa.me/+5541999016605"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative h-12 w-64 border-2 border-white rounded-xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-xl hover:scale-105 hover:border-[#0f3c63ff]"
-              >
-                <span className="z-10 flex items-center gap-2 text-white group-hover:text-[#022747ff] transition-all duration-300">
-                  <Phone className="w-5 h-5" /> WhatsApp
-                </span>
-                <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></span>
-              </a>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#357ab7] hover:bg-[#2a6191] rounded-lg font-medium transition-colors ${
+                    isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <span className="inline-block h-5 w-5 border-2 border-white/80 border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Enviar mensagem
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
-
-          {/* LADO DIREITO - Formulário */}
-          <form className="space-y-2 max-w-md mx-auto w-full" noValidate onSubmit={handleSubmit}>
-            <h2 className="text-2xl font-bold text-center mb-4">Entre em contato!</h2>
-
-            {[
-              { label: "Nome", id: "name", type: "text" },
-              { label: "Seuemail@email.com", id: "email", type: "email" },
-              { label: "Telefone", id: "phone", type: "tel" },
-              { label: "Assunto", id: "subject", type: "text" },
-            ].map(({ label, id, type }) => (
-              <div className="relative" key={id}>
-                <input
-                  id={id}
-                  name={id}
-                  type={type}
-                  required
-                  placeholder=" "
-                  inputMode={id === "phone" ? "numeric" : undefined}
-                  maxLength={id === "phone" ? 15 : undefined}
-                  className={`peer w-full px-3 py-3.5 border-2 ${
-                    errors[id] ? "border-red-500" : "border-white"
-                  } bg-transparent text-white rounded-xl appearance-none focus:outline-none focus:border-[#0f3c63ff] transition-colors`}
-                  onChange={(e) => {
-                    if (id === "phone") {
-                      let value = e.target.value.replace(/\D/g, "");
-                      if (value.length > 11) value = value.slice(0, 11);
-                      const formatted = value
-                        .replace(/^(\d{2})(\d)/, "($1) $2")
-                        .replace(/(\d{5})(\d)/, "$1-$2");
-                      e.target.value = formatted;
-                    }
-                  }}
-                  onInvalid={(e) =>
-                    (e.currentTarget as HTMLInputElement).setCustomValidity("Preencha este campo corretamente")
-                  }
-                  onInput={(e) =>
-                    (e.currentTarget as HTMLInputElement).setCustomValidity("")
-                  }
-                />
-                <label
-                  htmlFor={id}
-                  className="absolute text-base text-white/40 duration-300 transform -translate-y-7 scale-75 top-4 z-10 origin-[0] bg-[#0b293e] border-transparent rounded-xl px-2 left-1
-                  peer-focus:text-[#357ab7]
-                  peer-placeholder-shown:scale-100
-                  peer-placeholder-shown:translate-y-0
-                  peer-focus:scale-75
-                  peer-focus:-translate-y-7"
-                >
-                  {label}
-                </label>
-                {errors[id] ? (
-                  <p className="text-sm text-red-400 mt-1 mb-1 min-h-[20px] px-1">{errors[id]}</p>
-                ) : (
-                  <div className="min-h-[20px] mt-1 mb-1 px-1" />
-                )}
-              </div>
-            ))}
-
-            <div className="relative">
-              <textarea
-                id="message"
-                name="message"
-                placeholder=" "
-                required
-                rows={4}
-                className={`peer w-full px-3 py-3.5 border-2 ${
-                  errors["message"] ? "border-red-500" : "border-white"
-                } bg-transparent text-white rounded-xl appearance-none focus:outline-none focus:border-[#0f3c63ff] transition-colors resize-none`}
-                onInvalid={(e) =>
-                  (e.currentTarget as HTMLTextAreaElement).setCustomValidity("Preencha este campo corretamente")
-                }
-                onInput={(e) =>
-                  (e.currentTarget as HTMLTextAreaElement).setCustomValidity("")
-                }
-              />
-              <label
-                htmlFor="message"
-                className="absolute text-base text-white/40 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] border-transparent rounded-xl bg-[#0b293e] px-2 left-1
-                peer-focus:text-[#357ab7]
-                peer-placeholder-shown:scale-100
-                peer-placeholder-shown:translate-y-0
-                peer-focus:scale-75
-                peer-focus:-translate-y-6"
-              >
-                Mensagem
-              </label>
-              {errors["message"] ? (
-                <p className="text-sm text-red-400 mt-1 mb-1 min-h-[20px] px-1">{errors["message"]}</p>
-              ) : (
-                <div className="min-h-[20px] mt-1 mb-1 px-1" />
-              )}
-            </div>
-
-            <button
-              type="submit"
-              className="group relative h-12 w-full border-2 border-white rounded-xl overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 drop-shadow-xl hover:scale-105 hover:border-[#0f3c63ff]"
-            >
-              <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></span>
-              <span className="z-10 flex items-center gap-2 text-white group-hover:text-[#022747ff] transition-all duration-300">
-                Enviar
-              </span>
-            </button>
-          </form>
         </div>
       </section>
     </>

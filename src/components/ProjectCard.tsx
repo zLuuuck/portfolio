@@ -1,4 +1,3 @@
-// components/ProjectCard.tsx
 import { Github } from "lucide-react";
 import { useState } from "react";
 import ProjectModal from "./ProjectModal";
@@ -13,41 +12,77 @@ interface Props {
     techs: string[];
     icons: IconType[];
     details: string;
+    delay?: number;
 }
 
-
-export default function ProjectCard({ title, description, image, github, techs, icons, details }: Props) {
+export default function ProjectCard({
+    title,
+    description,
+    image,
+    github,
+    techs,
+    icons,
+    details,
+    delay = 0
+}: Props) {
     const [open, setOpen] = useState(false);
 
     return (
         <>
             <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                className="group relative w-full max-w-[500px] border-4 border-white hover:border-[#0f3c63ff] rounded-2xl overflow-hidden cursor-pointer bg-transparent shadow-2xl transition-all duration-500"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10,
+                    delay: delay
+                }}
+                viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                className="group relative w-full max-w-[500px] border-2 border-white/30 hover:border-[#357ab7] rounded-xl overflow-hidden cursor-pointer bg-gradient-to-b from-[#0d1d22] to-[#0a2a45] shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() => setOpen(true)}
             >
                 {/* Overlay ao passar o mouse */}
-                <span className="absolute inset-0 bg-[#357ab7] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out z-0" />
+                <div className="absolute inset-0 bg-[#357ab7] opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-0" />
 
                 {/* Conteúdo principal */}
                 <div className="relative z-10 flex flex-col h-full">
-                    <div className="h-60">
-                        <img src={image} alt={title} className="w-full h-full object-cover" />
+                    <div className="h-48 sm:h-56 w-full overflow-hidden">
+                        <img
+                            src={image}
+                            alt={title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                     </div>
-                    <div className="p-4 flex flex-col justify-between h-40">
+
+                    <div className="p-4 sm:p-5 flex flex-col gap-3">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-2xl font-semibold ">{title}</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold line-clamp-1">{title}</h2>
                             <a
                                 href={github}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
+                                className="text-white/70 hover:text-[#357ab7] transition-colors"
                             >
-                                <Github className="w-7 h-7 hover:text-[#0f3c63ff] transition" />
+                                <Github className="w-5 h-5 sm:w-6 sm:h-6" />
                             </a>
                         </div>
-                        <p className="text-sm mt-2 text-white/80 text-justify">{description}</p>
+
+                        <p className="text-sm text-white/80 line-clamp-3">{description}</p>
+
+                        <div className="flex flex-wrap gap-2 mt-2">
+                            {techs.slice(0, 3).map((tech, index) => (
+                                <span
+                                    key={index}
+                                    className="text-xs px-2 py-1 bg-white/10 rounded-full"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </motion.div>

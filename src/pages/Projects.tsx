@@ -60,9 +60,9 @@ const projetos = [
 
 export const Projects = () => {
   return (
-    <div className="min-h-screen px-10 py-20 text-white">
+    <div className="min-h-screen px-2 py-20 text-white">
       <h1 className="text-4xl sm:text-5xl font-bold mb-6 shine-text text-center p-6">Projetos</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center max-w-7xl mx-auto">
         {projetos.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
