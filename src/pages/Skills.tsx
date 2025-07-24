@@ -234,7 +234,7 @@ export const Skills = () => {
   >(null);
 
   return (
-    <div className="min-h-screen text-white px-6 py-20">
+    <div className="min-h-screen text-white px-6 py-20 ">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl sm:text-5xl font-bold mb-6 shine-text">Minhas Habilidades</h1>
 
@@ -244,7 +244,7 @@ export const Skills = () => {
           Aqui estão algumas das tecnologias com as quais trabalho e estudo frequentemente.
           Clique em uma para saber mais detalhes.
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div className="m-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {hardSkills.map((skill) => (
             <SkillCard
               key={skill.id}

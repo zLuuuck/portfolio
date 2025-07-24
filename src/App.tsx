@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Header lenisRef={lenisRef} />
-      <main className="bg-gradient-to-b from-black via-[#0d1d22] to-[#0a2a45] text-white">
+      <main className="container mx-auto px-4 md:px-6 lg:px-8 min-w-screen bg-gradient-to-b from-black via-[#0d1d22] to-[#0a2a45] text-white">
         <section id="home">
           <Home />
         </section>

@@ -20,7 +20,7 @@ export const Home = () => {
     <section
       ref={homeRef}
       id="home"
-      className="flex flex-col-reverse md:flex-row items-center justify-center h-screen w-full px-6 md:px-20 bg-transparent text-white"
+      className=" flex-col-reverse md:flex-row items-center justify-center h-screen sm:mt-10 px-6  md:px-20 bg-transparent text-white flex   min-h-[80vh] py-12 px-4 sm:px-6 lg:px-8"
     >
       {/* Imagem */}
       <div className="w-full md:w-1/2 flex justify-center mt-10 md:mt-0 relative">
