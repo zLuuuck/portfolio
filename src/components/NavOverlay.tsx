@@ -110,7 +110,7 @@ export const NavOverlay = ({ isOpen, onClose, scrollToSection }: NavOverlayProps
                     <Mail size={28} />
                 </a>
                 <a 
-                    href="https://wa.me/+5541999987886" 
+                    href="https://wa.me/+5541999016605" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="p-2 hover:text-[#4fc3f7] transition-colors"

@@ -117,8 +117,8 @@ export const Contact = () => {
                   {
                     icon: <Phone className="w-5 h-5 group-hover:text-[#022747ff] transition-colors" />,
                     label: "Telefone/WhatsApp",
-                    value: "(41) 99998-7886",
-                    href: "https://wa.me/+5541999987886"
+                    value: "(41) 99901-6605",
+                    href: "https://wa.me/+5541999016605"
                   },
                   {
                     icon: <Github className="w-5 h-5 group-hover:text-[#022747ff] transition-colors" />,
