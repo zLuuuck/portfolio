@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Github, Linkedin, Mail, Phone, Send } from "lucide-react";
-import emailjs from "@emailjs/browser";
+// ❌ REMOVIDO: import emailjs from "@emailjs/browser";
 import { Notification } from "../components/Notification";
 
 export const Contact = () => {
@@ -68,8 +68,9 @@ export const Contact = () => {
         });
       }
     }
-  }
-  
+    setIsSubmitting(false); // ✅ ADICIONADO: estava faltando essa linha
+  };
+
   const formatPhone = (value: string) => {
     const numbers = value.replace(/\D/g, '');
     let formatted = numbers;
