@@ -68,7 +68,8 @@ export const Contact = () => {
         });
       }
     }
-
+  }
+  
   const formatPhone = (value: string) => {
     const numbers = value.replace(/\D/g, '');
     let formatted = numbers;
