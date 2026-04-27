@@ -39,12 +39,23 @@ export const Contact = () => {
 
     if (Object.keys(newErrors).length === 0) {
       try {
-        await emailjs.sendForm(
-          "service_9f9bxwm",
-          "template_19c8zao",
-          form,
-          "awzOfUB0HNJqOCOLh"
-        );
+        const formData = {
+          name: (form.elements.namedItem("name") as HTMLInputElement).value,
+          email: (form.elements.namedItem("email") as HTMLInputElement).value,
+          phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+          subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
+          message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+        };
+
+        // 🔒 Chama a serverless function da Vercel
+        const response = await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) throw new Error("Falha no envio");
+
         setNotification({
           message: "Mensagem enviada com sucesso!",
           type: "success"
@@ -57,8 +68,6 @@ export const Contact = () => {
         });
       }
     }
-    setIsSubmitting(false);
-  };
 
   const formatPhone = (value: string) => {
     const numbers = value.replace(/\D/g, '');
