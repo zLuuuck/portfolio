@@ -1,11 +1,11 @@
 // api/send-email.js
 export default async function handler(req, res) {
-  // Permite apenas método POST
+  // Permite apenas POST
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Método não permitido" });
   }
 
-  // Headers CORS
+  // Headers CORS (caso necessário)
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST");
 
@@ -18,20 +18,21 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         service_id: process.env.EMAILJS_SERVICE_ID,
         template_id: process.env.EMAILJS_TEMPLATE_ID,
-        user_id: process.env.EMAILJS_PRIVATE_KEY,
+        user_id: process.env.EMAILJS_PRIVATE_KEY, // Private Key aqui, segura!
         template_params: formData,
       }),
     });
 
+    // EmailJS retorna texto "OK" em caso de sucesso, ou um JSON de erro
+    const responseText = await response.text();
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("EmailJS error:", errorText);
-      throw new Error("Falha no envio");
+      console.error("EmailJS error:", responseText);
+      return res.status(500).json({ error: "Erro ao enviar o email", detail: responseText });
     }
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Server error:", error);
-    return res.status(500).json({ error: "Erro ao enviar mensagem" });
+    console.error("Erro no servidor:", error.message);
+    return res.status(500).json({ error: "Erro interno do servidor" });
   }
 }

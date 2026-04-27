@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Github, Linkedin, Mail, Phone, Send } from "lucide-react";
-// ❌ REMOVIDO: import emailjs from "@emailjs/browser";
 import { Notification } from "../components/Notification";
 
 export const Contact = () => {
@@ -8,7 +7,7 @@ export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [notification, setNotification] = useState<{
     message: string;
-    type: "success" | "error"
+    type: "success" | "error";
   } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,7 +16,7 @@ export const Contact = () => {
     const form = e.currentTarget;
     const newErrors: Record<string, string> = {};
 
-    // Validação dos campos
+    // Validação (igual a sua original)
     const fields = ["name", "email", "phone", "subject", "message"];
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\(?\d{2}\)?[\s-]?\d{5}-?\d{4}$/;
@@ -39,6 +38,7 @@ export const Contact = () => {
 
     if (Object.keys(newErrors).length === 0) {
       try {
+        // Pegamos os dados manualmente
         const formData = {
           name: (form.elements.namedItem("name") as HTMLInputElement).value,
           email: (form.elements.namedItem("email") as HTMLInputElement).value,
@@ -47,32 +47,36 @@ export const Contact = () => {
           message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
         };
 
-        // 🔒 Chama a serverless function da Vercel
+        // Chamada segura para a nossa serverless function
         const response = await fetch("/api/send-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         });
 
-        if (!response.ok) throw new Error("Falha no envio");
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Falha no envio");
+        }
 
         setNotification({
           message: "Mensagem enviada com sucesso!",
-          type: "success"
+          type: "success",
         });
         form.reset();
-      } catch (error) {
+      } catch (error: any) {
         setNotification({
           message: "Erro ao enviar mensagem. Tente novamente mais tarde.",
-          type: "error"
+          type: "error",
         });
+        console.error("Erro:", error.message);
       }
     }
-    setIsSubmitting(false); // ✅ ADICIONADO: estava faltando essa linha
+    setIsSubmitting(false);
   };
 
   const formatPhone = (value: string) => {
-    const numbers = value.replace(/\D/g, '');
+    const numbers = value.replace(/\D/g, "");
     let formatted = numbers;
 
     if (numbers.length > 0) {
