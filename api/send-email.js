@@ -16,8 +16,8 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         service_id: process.env.EMAILJS_SERVICE_ID,
         template_id: process.env.EMAILJS_TEMPLATE_ID,
-        // ATENÇÃO AQUI: Use a PRIVATE KEY, não a PUBLIC KEY
-        user_id: process.env.EMAILJS_PRIVATE_KEY, 
+        user_id: process.env.EMAILJS_PUBLIC_KEY,      // 👈 Sua Chave Pública
+        accessToken: process.env.EMAILJS_PRIVATE_KEY,  // 👈 Sua Chave Privada
         template_params: formData,
       }),
     });
