@@ -14,7 +14,7 @@ export default function Objectives() {
 
                 <ObjectiveCard
                     front="Certificações"
-                    back="Já possuo Fortinet NSE 1 e NSE 2. Próximos passos: NSE 3 e NSE 4 (FortiGate Administrator), seguidas da Cisco CCNA em 2027."
+                    back="Já possuo Fortinet NSE 1 e NSE 2. Próximos passos: NSE 3 e NSE 4 (FortiOS Administrator), seguidas da Cisco CCNA em 2027."
                 />
 
                 <ObjectiveCard
