@@ -6,7 +6,7 @@ interface SkillModalProps {
   skill: {
     label: string;
     description: string;
-    level: number;
+    level: string;
     context: string;
     icon: IconType;
   };
@@ -53,17 +53,11 @@ export const SkillModal = ({ skill, onClose }: SkillModalProps) => {
             <p className="text-sm text-gray-400">{skill.context}</p>
           </div>
 
-          <div className="pt-2">
-            <div className="flex justify-between text-sm mb-1">
-              <span>Proficiência:</span>
-              <span>{skill.level}%</span>
-            </div>
-            <div className="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
-              <div 
-                className="shine-bar h-full rounded-full transition-all duration-500"
-                style={{ width: `${skill.level}%` }}
-              />
-            </div>
+          <div className="pt-2 flex items-center gap-2 text-sm">
+            <span className="text-gray-400">Nível:</span>
+            <span className="px-3 py-1 rounded-full border border-[#357ab7] text-[#357ab7] font-medium">
+              {skill.level}
+            </span>
           </div>
         </div>
       </motion.div>

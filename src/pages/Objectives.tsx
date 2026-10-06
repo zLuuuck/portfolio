@@ -8,18 +8,18 @@ export default function Objectives() {
             </h1>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-full max-w-7xl px-4">
                 <ObjectiveCard
-                    front="Aprimorar Habilidades em Cibersegurança"
-                    back="Atuar com Red Team e testes de intrusão em ambientes reais, identificando vulnerabilidades críticas e fortalecendo a segurança de grandes organizações."
+                    front="Segurança Defensiva"
+                    back="Atuar em SOC e segurança de infraestrutura: monitoramento de ambientes complexos, detecção e resposta a incidentes e proteção de redes corporativas."
                 />
 
                 <ObjectiveCard
-                    front="Certificações e Aprendizado Contínuo"
-                    back="Comprometido com o desenvolvimento profissional contínuo, estudo para obter certificações relevantes em cibersegurança, como CompTIA Security+, Pentest+, CEH, OSCP e AWS Certified Security – Specialty."
+                    front="Certificações"
+                    back="Já possuo Fortinet NSE 1 e NSE 2. Próximos passos: NSE 3 e NSE 4 (FortiOS Administrator), seguidas da Cisco CCNA em 2027."
                 />
-                
+
                 <ObjectiveCard
-                    front="Desenvolvimento Pessoal e Saúde"
-                    back="Manter uma rotina saudável com treinos diários, boa alimentação e equilíbrio mental, focando em qualidade de vida e produtividade."
+                    front="Formação"
+                    back="Concluir Análise e Desenvolvimento de Sistemas em julho de 2027, com TCC sobre uma plataforma de honeypots para detectar movimento lateral dentro de VLANs."
                 />
             </div>
         </section>

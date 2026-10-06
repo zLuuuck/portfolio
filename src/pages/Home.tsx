@@ -47,12 +47,13 @@ export const Home = () => {
           </h1>
 
           <h2 className="text-lg md:text-2xl text-center justify-center text-gray-300 mb-6">
-            Estudante de ADS focado em Cibersegurança e Pentest.
+            Estagiário de Infraestrutura e Redes, com foco em segurança de redes.
           </h2>
 
           <p className="text-gray-400 mb-8 text-base md:text-lg max-w-md leading-relaxed">
-            Estudo cibersegurança por conta própria, praticando em labs, escrevendo write-ups e desenvolvendo projetos.
-            Busco evoluir tecnicamente e contribuir para um mundo digital mais seguro.
+            Trabalho com FortiGate, Active Directory e AWS em uma consultoria de TI, estudo para a Fortinet NSE 4
+            e a Cisco CCNA e pratico segurança em laboratórios próprios. Meu foco é segurança defensiva: enxergar a
+            rede, entender o que acontece nela e responder rápido quando algo foge do normal.
           </p>
 
           {/* Botões */}
