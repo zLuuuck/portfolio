@@ -1,71 +1,74 @@
 ![portfolio](public/portfolio.png)
 
-# React + TypeScript + Vite
+# Portfólio, Lucas Toterol
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfólio pessoal de **Lucas Toterol Rodrigues** (zLuuuck), estagiário de Infraestrutura e Redes com foco em segurança de redes e segurança defensiva.
 
-Currently, two official plugins are available:
+🔗 **Site:** [zluuuck.vercel.app](https://zluuuck.vercel.app)
+📄 **Currículo:** [cv.pdf](public/cv.pdf)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Sobre mim
 
-## Expanding the ESLint configuration
+Estagiário de Infraestrutura e Redes na Microtel IT Solutions (consultoria e serviços gerenciados de TI), atuando com FortiGate, FortiAnalyzer, FortiClient EMS, Active Directory e AWS. Curso Análise e Desenvolvimento de Sistemas na Universidade Tuiuti do Paraná, com conclusão prevista para julho de 2027.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Possuo Fortinet NSE 1 e NSE 2 e estou me preparando para a NSE 4 (FortiOS Administrator) e para a Cisco CCNA.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Seções do site
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+| Seção | Conteúdo |
+|---|---|
+| Início | Apresentação e download do currículo |
+| Sobre mim | Formação, experiência atual e foco de carreira |
+| Objetivos | Segurança defensiva, certificações e formação |
+| Habilidades | Hard e soft skills, cada uma com o contexto em que foi aplicada |
+| Projetos | Write-ups de CTF, projetos acadêmicos e este portfólio |
+| Contato | Links e formulário de mensagem |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tecnologias
+
+- **React 19** com **TypeScript**, empacotado com **Vite**
+- **Tailwind CSS 4** para estilização
+- **Framer Motion** e **GSAP** para animações, **Lenis** para rolagem suave
+- **React Icons** e **Lucide** para ícones
+- **Vercel** para hospedagem, com uma função serverless (`api/send-email.js`) que envia o formulário de contato pelo **EmailJS**
+
+## Estrutura
+
+```
+api/
+  send-email.js      # função serverless do formulário de contato
+public/              # imagens e cv.pdf
+src/
+  pages/             # uma seção do site por arquivo (Home, About, Skills...)
+  components/        # cards, modais, header, footer
+  hooks/useLenis.ts  # rolagem suave
+  animations/        # animações com GSAP
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Rodando localmente
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Pré-requisito: Node.js 20 ou mais recente.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/zLuuuck/portfolio.git
+cd portfolio
+npm install
+npm run dev        # servidor de desenvolvimento em http://localhost:5173
+npm run build      # build de produção em dist/
+npm run preview    # serve o build localmente
 ```
+
+O formulário de contato depende da função em `api/`, que só roda no ambiente da Vercel (ou com `vercel dev`). Ela precisa destas variáveis de ambiente:
+
+| Variável | Descrição |
+|---|---|
+| `EMAILJS_SERVICE_ID` | ID do serviço no EmailJS |
+| `EMAILJS_TEMPLATE_ID` | ID do template de e-mail |
+| `EMAILJS_PUBLIC_KEY` | Chave pública do EmailJS |
+| `EMAILJS_PRIVATE_KEY` | Chave privada do EmailJS (nunca versionar) |
+
+## Contato
+
+- E-mail: [toterol.contato@gmail.com](mailto:toterol.contato@gmail.com)
+- LinkedIn: [linkedin.com/in/lucastoterol](https://linkedin.com/in/lucastoterol)
+- GitHub: [github.com/zLuuuck](https://github.com/zLuuuck)
