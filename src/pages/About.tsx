@@ -32,23 +32,19 @@ export const About = () => {
           
           <div className="text-base sm:text-lg leading-relaxed text-gray-300 text-center md:text-center space-y-4">
             <p>
-              Sou estudante na área tech<span className="font-semibold text-[#357ab7]"> há mais de 3 anos</span>, atualmente curso <span className="font-semibold text-[#357ab7]">Análise e Desenvolvimento de Sistemas</span> na Universidade Tuiuti do Paraná, com foco em <span className="font-semibold text-[#357ab7]">cibersegurança</span> e testes de penetração.
+              Sou <span className="font-semibold text-[#357ab7]">estagiário de Infraestrutura e Redes</span> na Microtel IT Solutions, consultoria de TI de Curitiba, e curso o 4º semestre de <span className="font-semibold text-[#357ab7]">Análise e Desenvolvimento de Sistemas</span> na Universidade Tuiuti do Paraná, com conclusão prevista para julho de 2027.
             </p>
-            
+
             <p>
-              Tenho <span className="font-semibold text-[#357ab7]">experiência prática</span> com labs como <span className="font-semibold text-[#357ab7]">TryHackMe</span> e <span className="font-semibold text-[#357ab7]">Hack The Box</span>, além de desenvolver projetos em <span className="font-semibold text-[#357ab7]">Python</span> e <span className="font-semibold text-[#357ab7]">aplicações web</span>.
+              No dia a dia administro firewalls <span className="font-semibold text-[#357ab7]">FortiGate</span>, analiso logs no <span className="font-semibold text-[#357ab7]">FortiAnalyzer</span>, faço troubleshooting de <span className="font-semibold text-[#357ab7]">VPNs IPsec e SSL</span> e trabalho com <span className="font-semibold text-[#357ab7]">Active Directory</span>, GPO e <span className="font-semibold text-[#357ab7]">AWS</span> em ambientes de clientes. Também participo de atividades de pré-venda técnica.
             </p>
-            
+
             <p>
-              Atuo também com sistemas <span className="font-semibold text-[#357ab7]">Linux e Windows</span>, possuo conhecimento em <span className="font-semibold text-[#357ab7]">montagem e manutenção de computadores</span>, e experiência com <span className="font-semibold text-[#357ab7]">suporte técnico</span> (help desk).
+              Meu objetivo é <span className="font-semibold text-[#357ab7]">segurança defensiva</span>: SOC, monitoramento e resposta a incidentes. Para isso estudo para a Fortinet NSE 4 e a Cisco CCNA, mantenho um home lab de redes e pratico no <span className="font-semibold text-[#357ab7]">TryHackMe</span> e no <span className="font-semibold text-[#357ab7]">Hack The Box</span>, porque entender o ataque ajuda a construir a defesa.
             </p>
-            
+
             <p>
-              Busco constantemente aprender e aplicar meus conhecimentos em projetos práticos e <span className="font-semibold text-[#357ab7]">desafios reais</span>.
-            </p>
-            
-            <p>
-              Este portfólio é um reflexo da minha trajetória e dos objetivos que persigo com dedicação, sempre buscando impactar positivamente com o que crio.
+              Fora do trabalho, dou aulas voluntárias de <span className="font-semibold text-[#357ab7]">informática básica</span> aos sábados na EIC São Braz.
             </p>
           </div>
         </motion.div>
