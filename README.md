@@ -11,7 +11,7 @@ Portfólio pessoal de **Lucas Toterol Rodrigues** (zLuuuck), estagiário de Infr
 
 Estagiário de Infraestrutura e Redes na Microtel IT Solutions (consultoria e serviços gerenciados de TI), atuando com FortiGate, FortiAnalyzer, FortiClient EMS, Active Directory e AWS. Curso Análise e Desenvolvimento de Sistemas na Universidade Tuiuti do Paraná, com conclusão prevista para julho de 2027.
 
-Possuo Fortinet NSE 1 e NSE 2 e estou me preparando para a NSE 4 (FortiOS Administrator) e para a Cisco CCNA.
+Possuo Fortinet NSE 1, NSE 2 e NSE 3 e estou me preparando para a NSE 4 (FortiOS Administrator) e para a Cisco CCNA.
 
 ## Seções do site
 
